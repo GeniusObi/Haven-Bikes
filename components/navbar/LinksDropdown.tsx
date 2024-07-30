@@ -25,20 +25,38 @@ function LinksDropdown() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40" align="start" sideOffset={2}>
-        {links.map((link, index) => {
-          return (
-            <DropdownMenuItem key={index}>
-              <Link
-                href={link.href}
-                className="capitalize w-full dark:text-muted-foreground"
-              >
-                {link.label}
-              </Link>
-            </DropdownMenuItem>
-          );
-        })}
-        <SignedIn></SignedIn>
-        <SignedIn></SignedIn>
+        <SignedOut>
+          <DropdownMenuItem>
+            <SignInButton mode="modal">
+              <button className="w-full text-left">Login</button>
+            </SignInButton>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>
+            <SignUpButton mode="modal">
+              <button className="w-full text-left">Register</button>
+            </SignUpButton>
+          </DropdownMenuItem>
+        </SignedOut>
+
+        <SignedIn>
+          {links.map((link, index) => {
+            return (
+              <DropdownMenuItem key={index}>
+                <Link
+                  href={link.href}
+                  className="capitalize w-full dark:text-muted-foreground"
+                >
+                  {link.label}
+                </Link>
+              </DropdownMenuItem>
+            );
+          })}
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>
+            <SignOutlink />
+          </DropdownMenuItem>
+        </SignedIn>
       </DropdownMenuContent>
     </DropdownMenu>
   );
