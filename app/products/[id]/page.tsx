@@ -12,7 +12,7 @@ export default async function SingleProduct({
   params: { id: string };
 }) {
   const product = await fetchSingleProduct(params.id);
-  const { name, image, company, description, price } = product;
+  const { name, image, company, description, price, id } = product;
   const dollarsAmount = formatCurrency(price);
   return (
     <section>
@@ -33,15 +33,15 @@ export default async function SingleProduct({
         <div>
           <div className="flex gap-x-8 items-center">
             <h1 className="capitalize text-3xl font-bold">{name}</h1>
-            <FavoriteToggleButton productId={params.id} />
+            <FavoriteToggleButton productId={id} />
           </div>
-          <ProductRating productId={product.id} />
+          <ProductRating productId={id} />
           <h4 className="text-xl mt-2">{company}</h4>
           <p className="mt-3 leading-8 text-muted-foreground">
             {dollarsAmount}
           </p>
           <p className="mt-6 leading-8 text-muted-foreground">{description}</p>
-          <AddToCart productId={params.id} />
+          <AddToCart productId={id} />
         </div>
       </div>
     </section>
