@@ -8,6 +8,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'www.pexels.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'xancnkdiomeqvlwthxkb.supabase.co',
       },
       {

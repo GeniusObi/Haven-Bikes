@@ -10,7 +10,7 @@ function ProductsList({ products }: { products: Product[] }) {
   return (
     <div className="mt-12 grid gap-y-8">
       {products.map((product) => {
-        const { name, price, company, image } = product;
+        const { name, price, brand, image } = product;
         const dollarsAmount = formatCurrency(price);
         const productId = product.id;
         return (
@@ -30,7 +30,7 @@ function ProductsList({ products }: { products: Product[] }) {
                   </div>
                   <div>
                     <h2 className="text-xl font-semibold capitalize">{name}</h2>
-                    <h4 className="text-muted-foreground">{company}</h4>
+                    <h4 className="text-muted-foreground">{brand}</h4>
                   </div>
                   <p className="text-muted-foreground text-lg md:ml-auto">
                     {dollarsAmount}

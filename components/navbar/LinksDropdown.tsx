@@ -16,6 +16,8 @@ import SignOutlink from './SignOutlink';
 import { links } from '@/utils/links';
 
 function LinksDropdown() {
+  const { userId } = auth();
+  const isAdmin = userId === process.env.ADMIN_USER_ID;
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -41,6 +43,7 @@ function LinksDropdown() {
 
         <SignedIn>
           {links.map((link, index) => {
+            if (link.label === 'dashboard' && !isAdmin) return null;
             return (
               <DropdownMenuItem key={index}>
                 <Link

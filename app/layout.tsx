@@ -24,7 +24,7 @@ export default function RootLayout({
         <body className={montserrat.className}>
           <Providers>
             <Navbar />
-            <Container className="py-20">{children}</Container>
+            <Container className="py-20 ">{children}</Container>
           </Providers>
         </body>
       </html>
