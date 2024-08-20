@@ -1,14 +1,7 @@
 import React from 'react';
 import db from '@/utils/db';
 export default async function About() {
-  const profile = await db.testProfile.create({
-    data: {
-      name: 'test',
-      id: '1',
-    },
-  });
-  const user = await db.testProfile.findMany();
-/*
+  /*
 In this about page  this is how the structure is going to  be:
 - There will be a 3 grid gallery of 6 images just like that in the dride theme.
 - The images will be of different bikes scenarios
