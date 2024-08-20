@@ -14,7 +14,7 @@ function Navbar() {
         <Logo />
         <Navsearch />
         <div className="flex gap-4 items-center">
-          <Cartbutton />
+          <Cartbutton/>
           <ModeToggle />
           <LinksDropdown />
         </div>

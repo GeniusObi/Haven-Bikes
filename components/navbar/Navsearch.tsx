@@ -10,6 +10,7 @@ function Navsearch() {
   const [search, setSearch] = useState(
     searchParams.get('search')?.toString() || ''
   );
+  
   const handleSearch = useDebouncedCallback((value: string) => {
     const params = new URLSearchParams(searchParams);
     if (value) {

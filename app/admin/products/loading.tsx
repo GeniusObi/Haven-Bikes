@@ -1,7 +1,9 @@
-import React from 'react';
+'use client';
+
+import LoadingTable from '@/components/global/LoadingTable';
 
 function loading() {
-  return <div>loading</div>;
+  return <LoadingTable rows={10} />;
 }
 
 export default loading;

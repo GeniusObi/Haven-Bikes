@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Card, CardContent, CardDescription } from '../ui/card';
 import { Skeleton } from '../ui/skeleton';

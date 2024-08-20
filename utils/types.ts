@@ -1,3 +1,9 @@
+import { Prisma } from '@prisma/client';
+
+export type CartItemWithProduct = Prisma.CartItemGetPayload<{
+  include: { product: true };
+}>;
+
 export type actionFunction = (
   prevState: any,
   formData: FormData
@@ -9,7 +15,7 @@ export type CartItem = {
   title: string;
   price: string;
   amount: number;
-  company: string;
+  brand: string;
 };
 
 export type CartState = {

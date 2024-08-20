@@ -11,7 +11,7 @@ function Sidebar() {
     <aside className="dark:border-4 rounded-md border-[#fff]">
       {adminLinks.map((link) => {
         const isActivePage = pathname === link.href;
-        const variant = isActivePage ? 'secondary' : 'ghost';
+        const variant = isActivePage ? 'default' : 'ghost';
         return (
           <Button
             asChild
