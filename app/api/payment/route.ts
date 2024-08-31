@@ -1,41 +1,21 @@
 import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
-import { redirect } from 'next/navigation';
-
-import { type NextRequest } from 'next/server';
+type Data = {
+  url?: string;
+  error?: string;
+};
+import { NextResponse, NextRequest } from 'next/server';
 import db from '@/utils/db';
 
 export const POST = async (req: NextRequest) => {
-  const requestHeaders = new Headers(req.headers);
-  const origin = requestHeaders.get('origin');
-  const { orderId, cartId } = await req.json();
-  const order = await db.order.findUnique({
-    where: {
-      id: orderId,
-    },
-  });
-  const cart = await db.cart.findUnique({
-    where: {
-      id: cartId,
-    },
-    include: {
-      cartItems: {
-        include: {
-          product: true,
-        },
-      },
-    },
-  });
-  if (!order || !cart) {
-    return Response.json({
-      status: 404,
-      statusText: 'Not found',
-    });
-  }
+  // const requestHeaders = new Headers(req.headers);
+  // const origin = requestHeaders.get('origin');
+  const origin = 'http://localhost:3000';
+  // const { cart } = await req.json();
 
-  //   line items
+  const { cart } = await req.json();
 
-  const line_items = cart.cartItems.map((cartItem) => {
+  const line_items = cart.cartItems.map((cartItem: any) => {
     return {
       quantity: cartItem.amount,
       price_data: {
@@ -44,23 +24,21 @@ export const POST = async (req: NextRequest) => {
           name: cartItem.product.name,
           images: [cartItem.product.image],
         },
-        unit_amount: cartItem.product.price * 100,
+        unit_amount: cartItem.product.price * 100, // price in cents
       },
     };
   });
+
   try {
     const session = await stripe.checkout.sessions.create({
-      ui_mode: 'embedded',
       line_items: line_items,
-      metadata: { orderId, cartId },
       mode: 'payment',
-      return_url: `${origin}/api/confirm?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${origin}/success?success=true`,
+      cancel_url: `${origin}/cancel?canceled=true`,
     });
-    return Response.json({ clientSecret: session.client_secret });
-  } catch (error) {
-    return Response.json(null, {
-      status: 500,
-      statusText: 'Internal Server Error',
-    });
+
+    return NextResponse.json({ url: session.url });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 };

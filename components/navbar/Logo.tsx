@@ -6,11 +6,10 @@ import logo from '../../public/images/Resized biko image.jpg';
 import Image from 'next/image';
 function Logo() {
   return (
-    <Button size="icon" asChild>
-      <Link href={'/'}>
-        <VscCode className={'w-6 h-6'} />
-      </Link>
-    </Button>
+    <Link href={'/'} className=" text-2xl flex">
+      <span className="text-primary"> Haven </span>
+      <span className="text-black dark:text-white">Bikes</span>
+    </Link>
   );
 }
 

@@ -6,22 +6,21 @@ import HeroCarousel from './HeroCarousel';
 function Hero() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-      <div>
-        <h1 className="max-w-2xl font-bold text-4xl tracking-wider italic  sm:text-6xl">
-          Exclusive Bikes
+      <div className="space-y-6 lg:space-y-8">
+        <h1 className="max-w-2xl font-bold text-4xl tracking-widests   sm:text-6xl">
+          Haven Bikes
         </h1>
-        <p className="bold dark:text-muted-foreground">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-          numquam ducimus obcaecati nesciunt quo reiciendis nam cupiditate eos
-          incidunt, vel quas deleniti saepe maxime quia. Inventore consequatur
-          unde harum iure aliquam nisi quod adipisci porro, laborum temporibus
-          animi deserunt veniam, corporis, culpa distinctio fugiat. Numquam
-          laudantium officiis alias accusantium non in quia vero? Vel sed,
-          placeat tempora nisi consectetur tenetur nam! Tempore temporibus
-          accusamus ex! Dicta illum fugit blanditiis magnam cum praesentium
-          libero maxime vel!
+        <p className="bold text-justify">
+          Discover the thrill of the ride with our handpicked selection of
+          exclusive bikes. At Haven Bikes, we cater to enthusiasts who value
+          performance, style, and craftsmanship. Whether you're hitting the
+          trails or cruising the city streets, our collection is designed to
+          elevate your biking experience. Explore the finest models from
+          world-renowned brands, each meticulously crafted to meet the demands
+          of the most discerning riders. Experience the perfect blend of
+          innovation and tradition with bikes that stand out, just like you.
         </p>
-        <Button asChild size={'lg'} className="mt-10">
+        <Button asChild size={'lg'} className="">
           <Link href={'/products'}>Products</Link>
         </Button>
       </div>

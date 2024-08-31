@@ -413,7 +413,7 @@ const updateOrCreateCartItem = async ({
         id: cartItem.id,
       },
       data: {
-        amount: cartItem.amount + amount,
+        amount: cartItem.amount + amount, // Ensure the amount is added
       },
     });
   } else {
@@ -421,6 +421,7 @@ const updateOrCreateCartItem = async ({
       data: { amount, productId, cartId },
     });
   }
+  return cartItem; // Return the updated or created cart item
 };
 
 export const updateCart = async (cart: Cart) => {
@@ -469,10 +470,12 @@ export const addToCartAction = async (prevState: any, formData: FormData) => {
     const cart = await fetchOrCreateCart({ userId: user.id });
     await updateOrCreateCartItem({ productId, cartId: cart.id, amount });
     await updateCart(cart);
+
+    revalidatePath('/cart');
+    return { message: 'product addded to cart' };
   } catch (error) {
     return renderError(error);
   }
-  redirect('/cart');
 };
 
 export const removeCartItemAction = async (
@@ -531,10 +534,11 @@ export const updateCartItemAction = async ({
   }
 };
 
-export const createOrderAction = async (prevState: any, formData: FormData) => {
+export const createOrderAction = async () => {
   const user = await getAuthUser();
   let orderId: null | string = null;
   let cartId: null | string = null;
+  let cartTotal: null | number = null;
 
   try {
     const cart = await fetchOrCreateCart({
@@ -542,6 +546,7 @@ export const createOrderAction = async (prevState: any, formData: FormData) => {
       errorOnFailure: true,
     });
     cartId = cart.id;
+    cartTotal = cart.cartTotal;
 
     await db.order.deleteMany({
       where: {
@@ -558,13 +563,21 @@ export const createOrderAction = async (prevState: any, formData: FormData) => {
         tax: cart.tax,
         shipping: cart.shipping,
         email: user.emailAddresses[0].emailAddress,
+        isPaid: true,
       },
     });
-    orderId = order.id;
+
+    await db.cart.delete({
+      where: {
+        id: cartId,
+      },
+    });
+    // orderId = order.id;
+
+    return order;
   } catch (error) {
     return renderError(error);
   }
-  redirect(`/checkout?orderId=${orderId}&cartId=${cartId}`);
 };
 
 export const fetchUserOrders = async () => {

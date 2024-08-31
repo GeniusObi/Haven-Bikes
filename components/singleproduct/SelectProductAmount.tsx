@@ -24,6 +24,39 @@ type SelectCartItemAmountProps = {
   isLoading: boolean;
 };
 
+// function SelectProductAmount(
+//   props: SelectProductAmountProps | SelectCartItemAmountProps
+// ) {
+//   const { mode, amount, setAmount } = props;
+
+//   const cartItem = mode === Mode.CartItem;
+
+//   return (
+//     <>
+//       <h4 className="mb-2">Amount : </h4>
+//       <Select
+//         defaultValue={amount.toString()}
+//         onValueChange={(value) => setAmount(Number(value))}
+//         disabled={cartItem ? props.isLoading : false}
+//       >
+//         <SelectTrigger className={cartItem ? 'w-[100px]' : 'w-[150px]'}>
+//           <SelectValue placeholder={amount} />
+//         </SelectTrigger>
+//         <SelectContent>
+//           {Array.from({ length: cartItem ? amount + 10 : 10 }, (_, index) => {
+//             const selectValue = (index + 1).toString();
+//             return (
+//               <SelectItem key={selectValue} value={selectValue}>
+//                 {selectValue}
+//               </SelectItem>
+//             );
+//           })}
+//         </SelectContent>
+//       </Select>
+//     </>
+//   );
+// }
+
 function SelectProductAmount(
   props: SelectProductAmountProps | SelectCartItemAmountProps
 ) {
@@ -35,12 +68,12 @@ function SelectProductAmount(
     <>
       <h4 className="mb-2">Amount : </h4>
       <Select
-        defaultValue={amount.toString()}
+        value={amount.toString()} // Use 'value' instead of 'defaultValue'
         onValueChange={(value) => setAmount(Number(value))}
         disabled={cartItem ? props.isLoading : false}
       >
         <SelectTrigger className={cartItem ? 'w-[100px]' : 'w-[150px]'}>
-          <SelectValue placeholder={amount} />
+          <SelectValue placeholder={amount.toString()} />
         </SelectTrigger>
         <SelectContent>
           {Array.from({ length: cartItem ? amount + 10 : 10 }, (_, index) => {
@@ -56,4 +89,5 @@ function SelectProductAmount(
     </>
   );
 }
+
 export default SelectProductAmount;

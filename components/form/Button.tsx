@@ -10,6 +10,14 @@ import { LuTrash2, LuPenSquare } from 'react-icons/lu';
 
 type btnSize = 'default' | 'lg' | 'sm';
 
+type OrderNowButtonProps = {
+  className?: string;
+  text?: string;
+  size?: btnSize;
+  onClick?: () => void;
+  loading: boolean;
+};
+
 type SubmitButtonProps = {
   className?: string;
   text?: string;
@@ -31,6 +39,32 @@ export function SubmitButton({
       size={size}
     >
       {pending ? (
+        <>
+          <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+          Please wait...
+        </>
+      ) : (
+        text
+      )}
+    </Button>
+  );
+}
+export function OrderNowButton({
+  className = '',
+  text = 'submit',
+  size = 'lg',
+  onClick,
+  loading,
+}: OrderNowButtonProps) {
+  return (
+    <Button
+      type="submit"
+      disabled={loading}
+      className={cn('capitalize', className)}
+      size={size}
+      onClick={onClick}
+    >
+      {loading ? (
         <>
           <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
           Please wait...
@@ -96,7 +130,7 @@ export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
       {pending ? (
         <ReloadIcon className=" animate-spin" />
       ) : isFavorite ? (
-        <FaHeart />
+        <FaHeart className="fill-primary" />
       ) : (
         <FaRegHeart />
       )}

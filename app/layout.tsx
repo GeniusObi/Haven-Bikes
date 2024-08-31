@@ -6,6 +6,7 @@ import Container from '@/components/global/Container';
 import Providers from './Providers';
 import { ClerkProvider } from '@clerk/nextjs';
 
+import { NextUIProvider } from '@nextui-org/react';
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['600'] });
 
 export const metadata: Metadata = {
@@ -22,10 +23,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={montserrat.className}>
-          <Providers>
-            <Navbar />
-            <Container className="py-20 ">{children}</Container>
-          </Providers>
+          <NextUIProvider>
+            <Providers>
+              <Navbar />
+              <Container className="py-20 ">{children}</Container>
+            </Providers>
+          </NextUIProvider>
         </body>
       </html>
     </ClerkProvider>

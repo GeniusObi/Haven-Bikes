@@ -14,6 +14,8 @@ import { SignInButton, SignedIn, SignedOut, SignUpButton } from '@clerk/nextjs';
 import { auth } from '@clerk/nextjs/server';
 import SignOutlink from './SignOutlink';
 import { links } from '@/utils/links';
+import CartButton from './Cartbutton';
+import ModeToggle from './Darkmode';
 
 function LinksDropdown() {
   const { userId } = auth();
@@ -46,15 +48,18 @@ function LinksDropdown() {
             if (link.label === 'dashboard' && !isAdmin) return null;
             return (
               <DropdownMenuItem key={index}>
-                <Link
-                  href={link.href}
-                  className="capitalize w-full dark:text-muted-foreground"
-                >
+                <Link href={link.href} className="capitalize w-full ">
                   {link.label}
                 </Link>
               </DropdownMenuItem>
             );
           })}
+          <div className="block lg:hidden">
+            <div className=" mt-2 flex gap-x-2">
+              <CartButton />
+              <ModeToggle />
+            </div>
+          </div>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <SignOutlink />

@@ -20,9 +20,9 @@ async function SingleProductPage({ params }: { params: { id: string } }) {
   return (
     <section>
       <BreadCrumbs name={product.name} />
-      <div className="mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16">
+      <div className="mt-6 grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:gap-x-16">
         {/* IMAGE FIRST COL */}
-        <div className="relative h-full">
+        <div className="relative min-h-96 ">
           <Image
             src={image}
             alt={name}

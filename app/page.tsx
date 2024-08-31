@@ -6,12 +6,12 @@ import React from 'react';
 import { Suspense } from 'react';
 function Home() {
   return (
-    <>
+    <main className="max-w-full">
       <Hero />
       <Suspense fallback={<LoadingContainer />}>
         <FeaturedProducts />
       </Suspense>
-    </>
+    </main>
   );
 }
 
