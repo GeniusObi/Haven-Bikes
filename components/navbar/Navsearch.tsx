@@ -10,7 +10,7 @@ function Navsearch() {
   const [search, setSearch] = useState(
     searchParams.get('search')?.toString() || ''
   );
-  
+
   const handleSearch = useDebouncedCallback((value: string) => {
     const params = new URLSearchParams(searchParams);
     if (value) {
@@ -24,7 +24,7 @@ function Navsearch() {
     if (!searchParams.get('search')) {
       setSearch('');
     }
-  }, [searchParams.get('search')]);
+  }, [searchParams]);
   return (
     <Input
       type="search"

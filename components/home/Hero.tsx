@@ -13,7 +13,7 @@ function Hero() {
         <p className="bold text-justify">
           Discover the thrill of the ride with our handpicked selection of
           exclusive bikes. At Haven Bikes, we cater to enthusiasts who value
-          performance, style, and craftsmanship. Whether you're hitting the
+          performance, style, and craftsmanship. Whether you&apos;re hitting the
           trails or cruising the city streets, our collection is designed to
           elevate your biking experience. Explore the finest models from
           world-renowned brands, each meticulously crafted to meet the demands

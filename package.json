@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": " next dev ",
-    "build": "npx prisma generate && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -36,6 +36,7 @@
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "react-share": "^5.1.0",
+    "sharp": "^0.33.5",
     "stripe": "^16.8.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
