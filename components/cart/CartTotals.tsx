@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { formatCurrency } from '@/utils/format';
 import { createOrderAction } from '@/utils/actions';
 import FormContainer from '../form/FormContainer';
-import { Cart } from '@prisma/client';
+import { type Cart } from '@prisma/client';
 import { OrderNowButton, SubmitButton } from '../form/Button';
 import { useState } from 'react';
 import { useToast } from '../ui/use-toast';
