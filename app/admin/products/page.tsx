@@ -34,7 +34,7 @@ async function AdminProductsPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {items.map((item) => {
+          {items.map((item: any) => {
             const { id: productId, name, brand, price } = item;
             return (
               <TableRow key={productId}>
