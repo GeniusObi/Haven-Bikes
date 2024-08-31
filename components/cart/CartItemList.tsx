@@ -9,7 +9,7 @@ import { FirstColumn, FourthColumn, SecondColumn } from './CartItemColumn';
 function CartItemsList({ cartItems }: { cartItems: CartItemWithProduct[] }) {
   return (
     <div>
-      {cartItems.map((cartItem) => {
+      {cartItems.map((cartItem: any) => {
         const { id, amount } = cartItem;
         const { image, name, brand, price, id: productId } = cartItem.product;
 

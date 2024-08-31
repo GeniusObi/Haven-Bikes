@@ -9,7 +9,7 @@ import FavoriteToggleButton from './FavoriteToggleButton';
 function ProductsList({ products }: { products: Product[] }) {
   return (
     <div className="mt-12 grid gap-y-8">
-      {products.map((product) => {
+      {products.map((product: any) => {
         const { name, price, brand, image } = product;
         const dollarsAmount = formatCurrency(price);
         const productId = product.id;

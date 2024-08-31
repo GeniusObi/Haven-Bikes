@@ -30,7 +30,7 @@ async function OrdersPage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {orders.map((order) => {
+            {orders.map((order: any) => {
               const { id, products, orderTotal, tax, shipping, createdAt } =
                 order;
 
