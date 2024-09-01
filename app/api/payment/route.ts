@@ -8,8 +8,7 @@ import { NextResponse, NextRequest } from 'next/server';
 import db from '@/utils/db';
 
 export const POST = async (req: NextRequest) => {
-
-  const origin = 'http://localhost:3000';
+  const origin = 'https://haven-bikes.vercel.app/';
 
   const { cart } = await req.json();
 
