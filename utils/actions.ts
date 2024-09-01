@@ -11,7 +11,18 @@ import {
 } from './schema';
 import { deleteImage, uploadImage } from './supabase';
 import { revalidatePath } from 'next/cache';
-import { Cart } from '@prisma/client';
+type Cart = {
+  id: string;
+  clerkId: string;
+  numItemsInCart: number;
+  cartTotal: number;
+  shipping: number;
+  tax: number;
+  taxRate: number;
+  orderTotal: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
 const getAuthUser = async () => {
   const user = await currentUser();
   if (!user) redirect('/');
