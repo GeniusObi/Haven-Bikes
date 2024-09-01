@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation';
+
 
 function SuccessPage() {
   return (

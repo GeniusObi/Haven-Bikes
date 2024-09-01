@@ -8,10 +8,8 @@ import { NextResponse, NextRequest } from 'next/server';
 import db from '@/utils/db';
 
 export const POST = async (req: NextRequest) => {
-  // const requestHeaders = new Headers(req.headers);
-  // const origin = requestHeaders.get('origin');
+
   const origin = 'http://localhost:3000';
-  // const { cart } = await req.json();
 
   const { cart } = await req.json();
 
@@ -28,7 +26,6 @@ export const POST = async (req: NextRequest) => {
       },
     };
   });
-
   try {
     const session = await stripe.checkout.sessions.create({
       line_items: line_items,
