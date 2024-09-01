@@ -82,7 +82,7 @@ export interface Cart {
   updatedAt: DateTime;
 }
 
-export interface CartItem {
+export interface CartItemProps {
   id: string;
   productId: string;
   cartId: string;

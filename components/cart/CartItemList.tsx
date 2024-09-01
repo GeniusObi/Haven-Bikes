@@ -6,10 +6,10 @@ import ThirdColumn from './ThirdColumn';
 import { CartItem, CartItemWithProduct } from '@/utils/types';
 import { FirstColumn, FourthColumn, SecondColumn } from './CartItemColumn';
 
-function CartItemsList({ cartItems }: { cartItems: CartItemWithProduct[] }) {
+function CartItemsList({ cartItems }: { cartItems: CartItem[] }) {
   return (
     <div>
-      {cartItems.map((cartItem:) => {
+      {cartItems.map((cartItem: CartItem) => {
         const { id, amount } = cartItem;
         const { image, name, brand, price, id: productId } = cartItem.product;
 
