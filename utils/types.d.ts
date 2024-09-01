@@ -30,7 +30,7 @@ export type actionFunction = (
 
 // Import DateTime for types if needed
 
-export interface Product {
+interface Product {
   id: string;
   name: string;
   brand: string;
@@ -45,8 +45,7 @@ export interface Product {
   reviews: Review[];
   cartItems: CartItem[];
 }
-
-export interface Favorite {
+interface Favorite {
   id: string;
   clerkId: string;
   productId: string;
@@ -54,8 +53,7 @@ export interface Favorite {
   updatedAt: DateTime;
   product: Product; // This implies a bi-directional relationship
 }
-
-export interface Review {
+interface Review {
   id: string;
   clerkId: string;
   rating: number;
@@ -67,8 +65,7 @@ export interface Review {
   productId: string;
   product: Product; // This implies a bi-directional relationship
 }
-
-export interface Cart {
+interface Cart {
   id: string;
   clerkId: string;
   cartItems: CartItem[];
@@ -82,7 +79,7 @@ export interface Cart {
   updatedAt: DateTime;
 }
 
-export interface CartItemProps {
+interface CartItem {
   id: string;
   productId: string;
   cartId: string;
@@ -92,8 +89,7 @@ export interface CartItemProps {
   product: Product; // This implies a bi-directional relationship
   cart: Cart; // This implies a bi-directional relationship
 }
-
-export interface Order {
+interface Order {
   id: string;
   clerkId: string;
   products: number;
