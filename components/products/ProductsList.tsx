@@ -1,12 +1,13 @@
 import { formatCurrency } from '@/utils/format';
-import { Product } from '@prisma/client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { Card, CardContent } from '../ui/card';
 import FavoriteToggleButton from './FavoriteToggleButton';
+import { Product } from '@/utils/types';
 
-function ProductsList({ products }: { products: Product[] }) {
+function ProductsList({ products }: { products: any }) {
   return (
     <div className="mt-12 grid gap-y-8">
       {products.map((product: any) => {

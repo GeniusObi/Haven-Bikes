@@ -6,9 +6,20 @@ import React from 'react';
 import { Card, CardContent } from '../ui/card';
 import Image from 'next/image';
 import FavoriteToggleButton from './FavoriteToggleButton';
-import { Product } from '@/utils/types';
+type FeaturedProductsProps = {
+  id: string;
+  name: string;
+  brand: string;
+  description: string;
+  featured: boolean;
+  image: string;
+  price: number;
+  createdAt: Date;
+  updatedAt: Date;
+  clerkId: string;
+};
 
-function ProductsGrid({ products }: { products: any }) {
+function FeaturedProductsGrid({ products }: { products: any }) {
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {products.map((product: any) => {
@@ -49,4 +60,4 @@ function ProductsGrid({ products }: { products: any }) {
   );
 }
 
-export default ProductsGrid;
+export default FeaturedProductsGrid;

@@ -5,11 +5,22 @@ import { Card } from '@/components/ui/card';
 import ThirdColumn from './ThirdColumn';
 import { CartItem, CartItemWithProduct } from '@/utils/types';
 import { FirstColumn, FourthColumn, SecondColumn } from './CartItemColumn';
-
-function CartItemsList({ cartItems }: { cartItems: CartItem[] }) {
+type CartItemsListProps = {
+  id: string;
+  name: string;
+  brand: string;
+  description: string;
+  featured: boolean;
+  image: string;
+  price: number;
+  createdAt: Date;
+  updatedAt: Date;
+  clerkId: string;
+};
+function CartItemsList({ cartItems }: { cartItems: any }) {
   return (
     <div>
-      {cartItems.map((cartItem: CartItem) => {
+      {cartItems.map((cartItem: any) => {
         const { id, amount } = cartItem;
         const { image, name, brand, price, id: productId } = cartItem.product;
 

@@ -8,9 +8,8 @@ import FormContainer from '../form/FormContainer';
 import { OrderNowButton, SubmitButton } from '../form/Button';
 import { useState } from 'react';
 import { useToast } from '../ui/use-toast';
-import { Cart } from '@/utils/types';
 
-function CartTotals({ cart }: { cart: Cart }) {
+function CartTotals({ cart }: { cart: any }) {
   const { cartTotal, shipping, tax, orderTotal } = cart;
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
